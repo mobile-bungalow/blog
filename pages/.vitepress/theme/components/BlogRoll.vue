@@ -23,10 +23,22 @@
 }
 </style>
 
+<script setup>
+  import {data as post_data} from '../post.data';
+import ArticleCard from './ArticleCard.vue';
+  console.log("help");
+</script>
+
 <template>
   <div :class='$style.blogroll_wrapper'>
-    <div  :class="$style.blogroll">
-      <div :class="$style.previews">  </div>
+    <div :class="$style.blogroll">
+      <div :class="$style.previews">
+          <ArticleCard v-for="post in post_data" 
+                      :date="post.date.string"
+                      :excerpt="post.excerpt"
+                      :tags="post.tags" 
+                      :title="post.title" ></ArticleCard>
+        </div>
     </div>
     <ScrollBar></ScrollBar>
   </div>

@@ -4,9 +4,8 @@ import Logo from './Logo.vue';
 import Description from './Description.vue';
 import ExternalLinks from './ExternalLinks.vue';
 import NavBar from './NavBar.vue';
+import BlogRoll from './BlogRoll.vue';
 
-// https://vitepress.dev/reference/runtime-api#usedata
-const { site, frontmatter } = useData()
 </script>
 
 <style module>
@@ -62,6 +61,7 @@ const { site, frontmatter } = useData()
     </div>
     <div :class='$style.center_column'>
       <NavBar/>
+      <BlogRoll></BlogRoll>
     </div>
     <div :class='$style.right_content' />
   </div>
