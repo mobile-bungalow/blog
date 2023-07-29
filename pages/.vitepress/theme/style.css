@@ -1,5 +1,58 @@
 
-html {
-  font-family: Arial, Helvetica;
+:root {
+    --bg-color: linear-gradient(#2b2d30 50%, #383838 100%);
+    --nav-bar-height: 96px;
+    --line-color: #f7f1e5;
+    --fill-color: #459599;
+    --title-size: min(5vw, 28px);
+    --body-size: min(3vw, 16px);
+    --title-font-family: "Franklin Gothic Medium";
+    --m-sm: 4px;
+    --m-m: 12px;
+    --m-l: 20px;
+    --m-xl: 24px;
 }
 
+html[data-theme="light"] {
+    --bg-color: linear-gradient(#2b2d30, #383838);
+    --line-color: #f7f1e5;
+    --fill-color: #459599;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+body {
+    background-image: var(--bg-color);
+    min-height: 98.5vh;
+}
+
+.title {
+    font-family: var(--title-font-family);
+    color: var(--line-color);
+    font-size: var(--title-size);
+    line-height: var(--title-size);
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: var(--m-m);
+    margin-right: var(--m-m);
+}
+
+
+.body {
+    font-family: var(--title-font-family);
+    color: var(--line-color);
+    font-size: var(--body-size);
+    line-height: var(--m-xl);
+    text-indent: var(--m-xl);
+}
+
+.page_link > a {
+    text-decoration: none;
+    color: var(--line-color);
+}
+
+.current_link > a {
+    color: var(--line-color);
+}
