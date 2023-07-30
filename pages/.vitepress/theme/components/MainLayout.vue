@@ -59,7 +59,7 @@ import BlogRoll from './BlogRoll.vue';
       </div>
       <ExternalLinks />
     </div>
-    <div :class='$style.center_column'>
+    <div :class='$style.center_content'>
       <NavBar/>
       <BlogRoll></BlogRoll>
     </div>

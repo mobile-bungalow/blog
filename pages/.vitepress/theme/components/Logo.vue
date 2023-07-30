@@ -2,6 +2,7 @@
 .logo_holder {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
     height: var(--nav-bar-height);
     
     border-image-slice: 10 10 2 12;
@@ -24,7 +25,7 @@
 </style>
 
 <template>
-  <div :class='$style.logo_holder'>
+  <a :class='$style.logo_holder' href="/">
     <div :class='$style.logo'>
       <img src="/assets/logo.svg" />
       <p  :class='$style.logo_text + " title"'>
@@ -33,5 +34,5 @@
         bursts
       </p>
     </div>
-  </div>
+  </a>
 </template>
