@@ -35,12 +35,10 @@ export default {
   methods: {
     update_scrollY(ratio: number) {
       const scrollContainer = this.$refs.scroll_area;
-
       const scrollHeight = scrollContainer.scrollHeight;
       const clientHeight = scrollContainer.clientHeight;
       const maxScrollTop = scrollHeight - clientHeight;
       const scrollTop = ratio * maxScrollTop;
-
       this.$refs.scroll_area.scrollTo({ top: scrollTop });
     },
   },

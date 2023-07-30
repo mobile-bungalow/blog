@@ -39,8 +39,6 @@
     return Math.min(Math.max(input, min), max);
   };
 
-  let prev_y = 0;
-
   export default {
     emits: ["dragged_to"],
     methods: {
@@ -69,7 +67,9 @@
         document.removeEventListener("mousemove", this.dragging);
       },
       dragging(ev) {
-
+         var rect = (this.$refs.track as HTMLDivElement).getBoundingClientRect();
+         var y = ev.clientY - rect.top;
+         this.$emit("dragged_to", clamp(y / rect.height, 0, 1));
       }
     }
   }
