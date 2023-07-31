@@ -39,11 +39,11 @@
     </div>
     <div :class="$style.svg_link + ' body'">
       <img src="/assets/git.svg" />
-      <a href="https://www.github.com"> Git Portfolio </a>
+      <a href="https://www.github.com/mobile-bungalow"> Git Portfolio </a>
     </div>
     <div :class="$style.svg_link + ' body'">
       <img src="/assets/linkedin.svg" />
-      <a href="https://www.linkedin.com"> Linkedin </a>
+      <a href="https://www.linkedin.com/in/mobile-bungalow"> Linkedin </a>
     </div>
   </div>
 </template>

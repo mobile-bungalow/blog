@@ -21,12 +21,26 @@
     margin-left: var(--m-l);
     max-height: 90%;
 }
+
+.collections {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    gap: var(--m-m);
+}
+
+@media only screen and (max-width: 868px) {
+    .collections {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 </style>
 
 <script lang="ts" setup>
-  import {data as post_data} from '../post.data';
-  import ArticleCard from './ArticleCard.vue';
-  import ScrollableCenter from './ScrollableCenter.vue';
+  import ScrollBar from './ScrollBar.vue';
+  import { useData } from 'vitepress';
+  let { frontmatter } = useData();
 
 </script>
 <script lang="ts">
@@ -46,12 +60,12 @@ export default {
 
 
 <template>
-    <ScrollableCenter>
-          <ArticleCard v-for="post in post_data" 
-                      :image_url="post.image_url ? post.image_url: '/assets/logo.svg' "
-                      :date="post.date.string"
-                      :excerpt="post.excerpt ? post.excerpt : '' "
-                      :tags="post.tags" 
-                      :title="post.title" ></ArticleCard>
-    </ScrollableCenter>
+  <div  :class='$style.blogroll_wrapper'>
+    <div ref="scroll_area" @scroll="(e) => { this.$refs.scrollbar.on_target_scroll(e) }" :class="$style.blogroll">
+      <div :class="$style[frontmatter.layout]">
+        <slot></slot>
+        </div>
+    </div>
+    <ScrollBar @dragged_to="update_scrollY" ref="scrollbar"></ScrollBar>
+  </div>
 </template>

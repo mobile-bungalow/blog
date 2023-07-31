@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
 import Logo from './Logo.vue';
 import Description from './Description.vue';
 import ExternalLinks from './ExternalLinks.vue';
 import NavBar from './NavBar.vue';
-import BlogRoll from './BlogRoll.vue';
 
 </script>
 
@@ -61,7 +59,7 @@ import BlogRoll from './BlogRoll.vue';
     </div>
     <div :class='$style.center_content'>
       <NavBar/>
-      <BlogRoll></BlogRoll>
+      <slot></slot>
     </div>
     <div :class='$style.right_content' />
   </div>

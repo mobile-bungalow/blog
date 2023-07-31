@@ -1,40 +1,16 @@
 <style module>
 .article_preview {
    display: flex; 
-   flex: 1 3;
+   flex-direction: column;
    border: 1px solid var(--line-color);
-   margin-bottom: var(--m-xl);
-   max-width: 900px;
+   max-width: 350px;
 }
 
 .image_divider {
-   border-left: 1px solid var(--line-color)
-}
-
-@media only screen and (max-width: 868px) {
-    .image_divider {
-       border-left: none; 
-    }
-
-    .preview_image {
-        display: none;
-    }
+   border-top: 1px solid var(--line-color)
 }
 
 
-@media only screen and (max-width: 669px) {
-
-    .preview_image {
-        display: block;
-    }
-    .article_preview {
-        flex-direction: column;
-    }
-
-    .image_divider {
-        border-top: 1px solid var(--line-color)
-    }
-}
 .date_and_tags {
     display: flex;
     justify-content: space-between;

@@ -65,16 +65,16 @@
   <div :class="$style.navbar_wrapper">
     <div :class="$style.navbar">
       <div :class="style_link('blog')">
-        <a href="/blog"> blog</a>
+        <a href="/"> blog</a>
       </div>
       <div :class="style_link('collections')">
-        <a href="/collections"> collections </a>
+        <a href="/collections.html"> collections </a>
       </div>
       <div :class="style_link('games')">
-        <a href="/games"> games </a>
+        <a href="/games.html"> games </a>
       </div>
       <div :class="style_link('art')">
-        <a href="/art"> art </a>
+        <a href="/art.html"> art </a>
       </div>
       <img :class="$style.help" src="/assets/logo.svg" />
     </div>

@@ -2,6 +2,7 @@
 import { useData, createContentLoader} from 'vitepress'
 import MainLayout from './components/MainLayout.vue';
 import BlogRoll from './components/BlogRoll.vue';
+import Collections from './components/Collections.vue';
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
@@ -10,18 +11,7 @@ const { site, frontmatter } = useData()
 
 <template>
     <MainLayout>
-      <div v-if="frontmatter.layout == 'blog'">
-        <BlogRoll></BlogRoll>
-      </div>
-      <div v-if="frontmatter.layout == 'games'">
-      </div>
-      <div v-if="frontmatter.layout == 'collections'">
-      </div>
-      <div v-if="frontmatter.layout == 'art'">
-      </div>
-      <div v-if="frontmatter.layout == 'article'">
-      </div>
-      <div v-if="frontmatter.layout == 'game_player'">
-      </div>
+        <BlogRoll v-if="frontmatter.layout == 'blog'"></BlogRoll>
+        <Collections v-if="frontmatter.layout == 'collections'"></Collections>
     </MainLayout>
 </template>
