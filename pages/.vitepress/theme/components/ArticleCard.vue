@@ -7,8 +7,22 @@
    max-width: 900px;
 }
 
+.article_preview:hover {
+    background-color: var(--bg-color);
+}
+
 .image_divider {
-   border-left: 1px solid var(--line-color)
+   border-left: 1px solid var(--line-color);
+   text-decoration: none;
+}
+
+.preview_image {
+    object-fit: fill;
+}
+
+.preview_image_link {
+    margin: auto;
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 868px) {
@@ -54,6 +68,7 @@
     min-width: 180px;
     align-self: center;
     justify-self: center;
+    cursor: pointer;
 }
 
 .tags {
@@ -70,6 +85,31 @@
     font-family: var(--title-font-family);
     margin-left: var(--m-m);
     font-size: var(--boy-size);
+    /* dude what the fuck */
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+    cursor: pointer;
+}
+
+.selected_tag {
+    color: var(--line-color);
+    background-color: var(--fill-color);
+    font-family: var(--title-font-family);
+    margin-left: var(--m-m);
+    font-size: var(--boy-size);
+    padding: 2px;
+    cursor: pointer;
+    /* dude what the fuck */
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
 }
 
 .date {
@@ -91,9 +131,11 @@
 </style>
 
 <script setup lang="ts">
-let tags = []
+defineEmits(["filterTagClicked"])
 
 type previewProps = {
+    filter_tags: string[],
+    url: string,
     tags: string[],
     title: string,
     date: string,
@@ -105,14 +147,22 @@ let props = defineProps<previewProps>()
 </script>
 
 <template>
-  <div :class="$style.article_preview">
-    <img :class="$style.preview_image" v-bind:src='props.image_url' />
-    <div :class="$style.image_divider" >
-      <p :class="$style.title + ' title'" style="margin: 12px"> {{ props.title }} </p>
-      <div :class="$style.excerpt + ' body'" v-html="props.excerpt">  </div>
+  <div :class="$style.article_preview" >
+     <a  :class="$style.preview_image_link" :href="props.url" >
+      <img :class="$style.preview_image" v-bind:src='props.image_url'  />
+     </a>
+    <div :class="$style.image_divider" :href="props.url">
+        <a :class="$style.preview_image_link" :href="props.url">
+         <p :class="$style.title + ' title'" style="margin: 12px"> {{ props.title }} </p>
+         <div :class="$style.excerpt + ' body'" v-html="props.excerpt">  </div>
+        </a>
       <div :class="$style.date_and_tags">
         <div :class="$style.tags"> 
-            <a v-for="tag in props.tags" :class="$style.tag"> {{ "#" + tag  }} </a>
+            <a  v-for="tag in props.tags"  
+                @click="$emit('filterTagClicked', tag)" 
+                :class='props.filter_tags.includes(tag) ? $style.selected_tag: $style.tag'>
+                 {{ "#" + tag  }} 
+            </a>
         </div>
         <div :class="$style.date">
           <p> {{ props.date }} </p>

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-around;
     align-self: center;
+    gap: var(--m-l);
     width: 100%;
     margin-top: var(--m-xl);
     margin-bottom: 42px;
@@ -25,7 +26,7 @@
 
 
 .navbar_wrapper {
-    height: var(--nav-bar-height);
+    height: 102px;
     border-image-slice: 27 23 27 23;
     border-image-width: 20px 20px 20px 20px;
     border-image-outset: 0px 0px 0px 0px;
@@ -64,7 +65,7 @@
 <template>
   <div :class="$style.navbar_wrapper">
     <div :class="$style.navbar">
-      <div :class="style_link('blog')">
+      <!--div :class="style_link('blog')">
         <a href="/"> blog</a>
       </div>
       <div :class="style_link('collections')">
@@ -75,8 +76,8 @@
       </div>
       <div :class="style_link('art')">
         <a href="/art.html"> art </a>
-      </div>
-      <img :class="$style.help" src="/assets/logo.svg" />
+      </div-->
+      <!--img :class="$style.help" src="/assets/logo.svg" /-->
     </div>
   </div>
 </template>

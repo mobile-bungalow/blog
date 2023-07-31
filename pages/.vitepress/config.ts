@@ -4,9 +4,6 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   themeConfig: {
     logo: 'public/favicon.ico',
-    search: {
-      provider: 'local'
-    }
   },
   title: "Concentrated Bursts",
   description: "the personal site of Paul May."

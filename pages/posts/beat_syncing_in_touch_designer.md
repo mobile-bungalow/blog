@@ -1,10 +1,8 @@
 ---
 title: Vue 3.2 Released!
 date: 2021-08-05
-author: Evan You
-gravatar: eca93da2c67aadafe35d477aa8f454b8
-twitter: '@youyuxi'
-tags: [test, next]
+tags: [video editing]
+layout: blog_post
 ---
 
 We are excited to announce the release of Vue.js 3.2 "Quintessential Quintuplets"! This release includes many significant new features and performance improvements, and contains no breaking changes.
@@ -20,3 +18,4 @@ Two new features for Single File Components (SFCs, aka `.vue` files) have gradua
 - `<style> v-bind` enables component state-driven dynamic CSS values in SFC `<style>` tags.
 
 Here is an example component using these two new features together:
+

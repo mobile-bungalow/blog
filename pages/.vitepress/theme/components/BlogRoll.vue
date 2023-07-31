@@ -1,53 +1,58 @@
 <style module>
+  .hidden {
+    display: none;
+  }
 
-.blogroll {
-    overflow-y: scroll;
-    margin: var(--m-m);
-}
+  .filter_modal {
+    display: block;
+    position: absolute;
+    background-color: aqua;
+    width: 200px;
+    height: 50px;
+    top: 2%;
+    left: 50%;
+  }
 
-.blogroll{
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.blogroll::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-}
-
-.blogroll_wrapper {
-    display: flex;
-    flex-direction: row;
-    margin-right: var(--m-l);
-    margin-left: var(--m-l);
-    max-height: 90%;
-}
 </style>
 
 <script lang="ts" setup>
   import {data as post_data} from '../post.data';
-  import ArticleCard from './ArticleCard.vue';
-  import ScrollableCenter from './ScrollableCenter.vue';
-
-</script>
-<script lang="ts">
-export default {
-  methods: {
-    update_scrollY(ratio: number) {
-      const scrollContainer = this.$refs.scroll_area;
-      const scrollHeight = scrollContainer.scrollHeight;
-      const clientHeight = scrollContainer.clientHeight;
-      const maxScrollTop = scrollHeight - clientHeight;
-      const scrollTop = ratio * maxScrollTop;
-      this.$refs.scroll_area.scrollTo({ top: scrollTop });
-    },
-  },
-}
+  const $style = useCssModule();
+import { ref,  useCssModule } from 'vue';
+import ArticleCard from './ArticleCard.vue';
+import ScrollableCenter from './ScrollableCenter.vue';
+const modal = ref<null|HTMLDivElement>(null);
+const filters = ref<string[]>([]);
+   function stop_filtering() {
+     if (modal.value) {
+        modal.value.className = $style["hidden"]
+     }
+    }
+  function show_filter_modal() {
+     if (modal.value) {
+        modal.value.className = $style["filter_modal"]
+     }
+    }
+    function add_filter(filter: string) {
+      if (!filters.value.includes(filter)) {
+        filters.value.push(filter);
+        show_filter_modal();
+      } else {
+        filters.value = filters.value.filter(item => item != filter);
+        if (filters.value.length == 0) {
+          stop_filtering
+        }
+      }
+    }
 </script>
 
 
 <template>
     <ScrollableCenter>
-          <ArticleCard v-for="post in post_data" 
+          <ArticleCard @filter-tag-clicked="(e) => add_filter(e)" 
+                      v-for="post in post_data.filter((a) => a.tags.some(r => filters.length == 0 ? true : filters.includes(r)))" 
+                      :filter_tags="filters"
+                      :url="post.url"
                       :image_url="post.image_url ? post.image_url: '/assets/logo.svg' "
                       :date="post.date.string"
                       :excerpt="post.excerpt ? post.excerpt : '' "
