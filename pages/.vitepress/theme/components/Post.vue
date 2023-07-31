@@ -5,25 +5,30 @@
         font-family: var(--title-font-family);
     }
 
-    body {
+    p {
         size: var(--body-size);
         color: var(--line-color);
         font-family: var(--title-font-family);
     }
 
+    ul {
+        color: var(--fill-color);
+    }
+
+
     hr {
         color: var(--fill-color);
     }
+
 </style>
 
 <script lang="ts" setup>
+import ScrollableCenter from './ScrollableCenter.vue';
 </script>
 
 
 <template>
     <ScrollableCenter>
-        <div>
-            <Content></Content>
-        </div>
+        <Content></Content>
     </ScrollableCenter>
 </template>
