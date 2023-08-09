@@ -1,6 +1,20 @@
 <style module>
+
+    h3 {
+        color: var(--line-color);
+        font-family: var(--title-font-family);
+    }
+
+    a {
+        color: var(--fill-color);
+    }
+
     h2 {
-        size: var(--title-size);
+        color: var(--line-color);
+        font-family: var(--title-font-family);
+    }
+
+    h1 {
         color: var(--line-color);
         font-family: var(--title-font-family);
     }
@@ -9,6 +23,7 @@
         size: var(--body-size);
         color: var(--line-color);
         font-family: var(--title-font-family);
+        line-height: var(--m-xl);
     }
 
     ul {
@@ -20,6 +35,11 @@
         color: var(--fill-color);
     }
 
+    .wrapper {
+        margin-left: var(--m-m);
+        margin-right: var(--m-m);
+        max-width: 850px;
+    }
 </style>
 
 <script lang="ts" setup>
@@ -29,6 +49,8 @@ import ScrollableCenter from './ScrollableCenter.vue';
 
 <template>
     <ScrollableCenter>
-        <Content></Content>
+            <div :class="$style.wrapper">
+                <Content></Content>
+            </div>
     </ScrollableCenter>
 </template>

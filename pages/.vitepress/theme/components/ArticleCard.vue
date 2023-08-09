@@ -5,10 +5,7 @@
    border: 1px solid var(--line-color);
    margin-bottom: var(--m-xl);
    max-width: 900px;
-}
-
-.article_preview:hover {
-    background-color: var(--bg-color);
+   transition: background-image 3s;
 }
 
 .image_divider {
@@ -62,6 +59,7 @@
 .excerpt {
     margin-right: var(--m-xl);
     margin-left: var(--m-xl);
+    margin-bottom: var(--m-m);
 }
 
 .preview_image {

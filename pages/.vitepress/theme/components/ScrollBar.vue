@@ -39,6 +39,7 @@
     return Math.min(Math.max(input, min), max);
   };
 
+
   export default {
     emits: ["dragged_to"],
     methods: {

@@ -19,10 +19,10 @@ export default createContentLoader('posts/*.md', {
  excerpt: true,
  transform(raw): Post[] {
    return raw
-     .map(({ url, frontmatter, excerpt }) => ({
+     .map(({ url, frontmatter }) => ({
        title: frontmatter.title,
        url,
-       excerpt,
+       excerpt: frontmatter.excerpt,
        date: formatDate(frontmatter.date),
        tags: frontmatter.tags,
        image_url: frontmatter.image_url

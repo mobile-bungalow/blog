@@ -47,12 +47,3 @@ body {
     line-height: var(--m-xl);
     text-indent: var(--m-xl);
 }
-
-.page_link > a {
-    text-decoration: none;
-    color: var(--line-color);
-}
-
-.current_link > a {
-    color: var(--line-color);
-}

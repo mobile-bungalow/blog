@@ -1,21 +1,7 @@
 ---
-title: Vue 3.2 Released!
+title: Beat syncing video in touch designer 
 date: 2021-08-05
-tags: [video editing]
+tags: [video editing, motion graphics]
 layout: blog_post
+excerpt: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ---
-
-We are excited to announce the release of Vue.js 3.2 "Quintessential Quintuplets"! This release includes many significant new features and performance improvements, and contains no breaking changes.
-
----
-
-## New SFC Features
-
-Two new features for Single File Components (SFCs, aka `.vue` files) have graduated from experimental status and are now considered stable:
-
-- `<script setup>` is a compile-time syntactic sugar that greatly improves the ergonomics when using Composition API inside SFCs.
-
-- `<style> v-bind` enables component state-driven dynamic CSS values in SFC `<style>` tags.
-
-Here is an example component using these two new features together:
-
