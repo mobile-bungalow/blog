@@ -29,6 +29,7 @@ import NavBar from './NavBar.vue';
 .center_content {
     display: flex;
     flex-direction: column;
+    min-width: 50%;
 }
 
 .title {

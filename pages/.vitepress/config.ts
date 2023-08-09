@@ -6,5 +6,13 @@ export default defineConfig({
     logo: 'public/favicon.ico',
   },
   title: "Concentrated Bursts",
-  description: "the personal site of Paul May."
+  description: "the personal site of Paul May.",
+  vite: {
+    server: {
+      headers: {
+                "Cross-Origin-Opener-Policy": "same-origin",
+                "Cross-Origin-Embedder-Policy": "require-corp",
+      },
+    },
+  },
 })

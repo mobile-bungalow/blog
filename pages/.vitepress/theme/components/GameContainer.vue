@@ -20,11 +20,19 @@
 
     .concillation {
         display: none;
+        position: relative;
+        width: 70%;
+        min-height: 250px;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid var(--line-color);
+        padding: var(--m-m); 
+        margin: auto;
     }
 
 @media only screen and (max-width: 669px) {
     .concillation {
-        display: block;
+        display: flex;
     }
 
     .iframe {
@@ -39,5 +47,8 @@
 <template>
     <div :class="$style.wrapper">
     <iframe :class="$style.iframe" :src="props.src"/>
+    <div :class="$style.concillation">
+        <p> I'm Sorry, this game was not meant to be played on a mobile viewport </p>
+    </div>
     </div>
 </template>
