@@ -54,3 +54,23 @@ body {
     padding-left: var(--m-l);
     padding-right: var(--m-l);
 }
+
+.language-glsl {
+    background-color: #3b3d3f;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    overflow: auto;
+    overflow-wrap: break-word;
+    padding: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    white-space: pre-wrap;
+}
+
+.lang {
+    display: none;
+}
+
+.copy {
+    display: none;
+}

@@ -34,10 +34,26 @@ We simply discard any collisions which fulfill the above criteria. This means th
 
 ## Z Cheating
 
-This method involves doing a second pass with a depth shader, and simply redrawing all occluded actors in a bright color on top of the props. In my opinion, this is the not very immersive unless your game includes some aspect of x-ray vision or extra sensory perception, in which case it should be stylized to reflect that. An example is playable below.
+This method involves doing a second pass with a depth sensitive shader, and simply redrawing all occluded actors in a bright color on top of the props. In my opinion, this is the not very immersive unless your game includes some aspect of x-ray vision or extra sensory perception, in which case it should be stylized to reflect that. An example is playable below with the [source code linked here](https://github.com/mobile-bungalow/TransparencyDemo1/tree/x-ray).
 
 
 <GameContainer mobile_compat="false" src="/game_packages/Demo_2_blog_1/index.html"/> 
+
+The shader code for such and effect is simple, add a second pass with any shader effect and discard fragments which are not overidden by the depth pass. see the following shader.
+
+```glsl
+shader_type spatial;
+render_mode blend_mix, depth_test_disabled, unshaded;
+
+uniform sampler2D depth_texture : source_color, hint_depth_texture;
+
+void fragment () {
+	float z = FRAGCOORD.z;
+	float depth = texture(depth_texture, SCREEN_UV).x;
+	if (z <= depth ) discard;
+	ALBEDO = vec3(1.0, 1.0, 0.0);
+}
+```
 
 ### Common Augmentations and Issues
 
@@ -46,7 +62,7 @@ Besides being fairly immersion breaking, jumbles of things behind walls become h
 
 ## Pinhole Shaders
 
-Another option, often best combined with other methods, is the pinhole shader. This takes the screen space coordinates of all actors and passes them to the mesh shader, then any fragments in a circle (or any SDF compatible shape) are either discarded or have their alpha's appropriately attenuated. An example is playable below. 
+Another option, often best combined with other methods, is the pinhole shader. This takes the screen space coordinates of all actors and passes them to the mesh shader, then any fragments in a circle (or any SDF compatible shape) are either discarded or have their alpha's appropriately attenuated. An example is playable below [with source available here](https://github.com/mobile-bungalow/TransparencyDemo1/tree/pinhole). 
 
 <GameContainer mobile_compat="false" src="/game_packages/Demo_3_blog_1/index.html"/> 
 
