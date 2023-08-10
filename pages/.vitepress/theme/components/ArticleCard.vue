@@ -7,18 +7,23 @@
    max-width: 900px;
    transition: background-image 3s;
 }
+.preview_image {
+    min-width: 180px;
+    max-width: 250px;
+    height: 100%;
+    object-fit:cover;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
 
 .image_divider {
    border-left: 1px solid var(--line-color);
    text-decoration: none;
 }
 
-.preview_image {
-    object-fit: fill;
-}
-
 .preview_image_link {
-    margin: auto;
     text-decoration: none;
 }
 
@@ -37,6 +42,7 @@
 
     .preview_image {
         display: block;
+        max-width: 100%;
     }
     .article_preview {
         flex-direction: column;
@@ -60,13 +66,6 @@
     margin-right: var(--m-xl);
     margin-left: var(--m-xl);
     margin-bottom: var(--m-m);
-}
-
-.preview_image {
-    min-width: 180px;
-    align-self: center;
-    justify-self: center;
-    cursor: pointer;
 }
 
 .tags {

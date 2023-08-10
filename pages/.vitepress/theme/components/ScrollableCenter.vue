@@ -19,7 +19,8 @@
     flex-direction: row;
     margin-right: var(--m-l);
     margin-left: var(--m-l);
-    max-height: 90%;
+    max-height: calc(100% - var(--nav-bar-height));
+    
 }
 
 .collections {

@@ -77,7 +77,9 @@
       <div :class="style_link('art')">
         <a href="/art.html"> art </a>
       </div>
-      <img :class="$style.help" src="/assets/logo.svg" />
+      <a href="/">
+        <img :class="$style.help" src="/assets/logo.svg" />
+      </a>
     </div>
   </div>
 </template>

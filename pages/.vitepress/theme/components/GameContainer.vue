@@ -9,13 +9,15 @@
 <style module>
     .iframe {
         position: relative;
-        width: 50%;
-        min-height: 250px;
-        left: 25%;
+        min-height: 450px;
+        flex-grow: 1;
+        margin: var(--m-m);
     }
 
     .wrapper {
+        display: flex;
         width: 100%;
+        justify-content: center;
     }
 
     .concillation {
@@ -30,7 +32,7 @@
         margin: auto;
     }
 
-@media only screen and (max-width: 669px) {
+@media only screen and (max-width: 886px) {
     .concillation {
         display: flex;
     }
@@ -39,7 +41,6 @@
         display: none;
     }
 }
-
 
 </style>
 

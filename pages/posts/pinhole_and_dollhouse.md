@@ -3,6 +3,7 @@ title: Pinhole and Dollhouse shaders for action RPG's
 date: 2023-07-31
 tags: [graphics, gamedev, godot]
 layout: blog_post
+image_url: "/assets/diablo.webp"
 excerpt: Games such as diablo and various action RPG's with isometric or top-down cameras often fade out objects that are occluding any actors on screen. this effect can be achieved through a number of means, ray casting, depth testing, etc. In this article I go through several simple demos showing how to implement these features in a game using the godot engine.
 ---
 
@@ -10,11 +11,14 @@ excerpt: Games such as diablo and various action RPG's with isometric or top-dow
     import GameContainer from '../.vitepress/theme/components/GameContainer.vue';
 </script>
 
+![diablo screen grab](/assets/diablo.webp)
+
+
 Action rpg's use a few visual tricks to make their top down camera less frustrating. Today I'm going to focus on three methods of dollhousing, or turning objects inbetween the player and camera transparent. 
 
 ## Raycasting
 
-The first way I'll be demonstrating to achieve this effect is by simply casting rays into the scene from the camera origin towards any actors and applying an effect to any collided objects. I've provided a sample [godot project with a rough implementation here](https://github.com/mobile-bungalow/TransparencyDemo1). You can play it in browser below. The method below was achieved with simple raycasting in a semi-circle from the camera to the player and with single raycasts towards NPCs, using logic to toggle the raycasting on if the you wish to hide the NPC. On Ray collision, an instance shader parameter is animated on the effect mesh.
+The first way I'll be demonstrating to achieve this effect is by simply casting rays into the scene from the camera origin towards any actors and applying an effect to any collided objects. I've provided a sample [godot project with a rough implementation here](https://github.com/mobile-bungalow/TransparencyDemo1). You can play it in browser below. The method below was achieved with simple raycasting in a semi-circle from the camera to the player and with single raycasts towards NPCs, using logic to toggle the raycasting off if the you wish to hide the NPC. On Ray collision, an instance shader parameter is animated on the effect mesh.
 
 <GameContainer mobile_compat="false" src="/game_packages/Demo_1_blog_1/index.html"/> 
 
@@ -24,7 +28,7 @@ For Player characters often one ray will not be enough to provide sufficient spr
 
 The answer is stupidly simple. Any points on the same side of a plane have the same sign when run through it's equation as defined by it's surface normal. 
 
-# IMAGE HERE
+![an explanatory graphic about the previous paragraph](/assets/asat.png)
 
 We simply discard any collisions which fulfill the above criteria. This means that the ray collider for this type of scene must be a plane, you can likely get away with a box for shorter, stockier props such as colums or crates - but will encounter some unwanted dollhousing when approaching such objects from the front. another option is to use a plane that automatically orients towards the players location with a width reaching to the extent of the prop. 
 
@@ -33,7 +37,7 @@ We simply discard any collisions which fulfill the above criteria. This means th
 This method involves doing a second pass with a depth shader, and simply redrawing all occluded actors in a bright color on top of the props. In my opinion, this is the not very immersive unless your game includes some aspect of x-ray vision or extra sensory perception, in which case it should be stylized to reflect that. An example is playable below.
 
 
-<GameContainer mobile_compat="false" src="/game_packages/Demo_1_blog_1/index.html"/> 
+<GameContainer mobile_compat="false" src="/game_packages/Demo_2_blog_1/index.html"/> 
 
 ### Common Augmentations and Issues
 
@@ -44,7 +48,7 @@ Besides being fairly immersion breaking, jumbles of things behind walls become h
 
 Another option, often best combined with other methods, is the pinhole shader. This takes the screen space coordinates of all actors and passes them to the mesh shader, then any fragments in a circle (or any SDF compatible shape) are either discarded or have their alpha's appropriately attenuated. An example is playable below. 
 
-<GameContainer mobile_compat="false" src="/game_packages/Demo_1_blog_1/index.html"/> 
+<GameContainer mobile_compat="false" src="/game_packages/Demo_3_blog_1/index.html"/> 
 
 ### Common Augmentations and Issues
 
