@@ -44,7 +44,7 @@
   import { ref } from 'vue';
   let { frontmatter } = useData();
 
-  let scrollbar = ref< typeof ScrollBar|undefined>(undefined);
+  let scrollbar = ref<any|undefined>(undefined);
   let scroll_area = ref<HTMLDivElement|undefined>(undefined);
 
   const update_scrollY = (ratio: number) => {
@@ -64,7 +64,7 @@ defineExpose({ update_scrollY });
 
 <template>
   <div  :class='$style.blogroll_wrapper'>
-    <div ref="scroll_area" @scroll="(e) => { scrollbar?.value.on_target_scroll(e) }" :class="$style.blogroll">
+    <div ref="scroll_area" @scroll="(e) => { scrollbar.on_target_scroll(e) }" :class="$style.blogroll">
       <div :class="$style[frontmatter.layout]">
         <slot></slot>
         </div>
