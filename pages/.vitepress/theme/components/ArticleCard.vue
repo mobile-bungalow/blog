@@ -128,6 +128,7 @@
 </style>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress';
 defineEmits(["filterTagClicked"])
 
 type previewProps = {
@@ -145,11 +146,11 @@ let props = defineProps<previewProps>()
 
 <template>
   <div :class="$style.article_preview" >
-     <a  :class="$style.preview_image_link" :href="props.url" >
-      <img :class="$style.preview_image" v-bind:src='props.image_url'  />
+     <a  :class="$style.preview_image_link" :href="withBase(props.url)" >
+      <img :class="$style.preview_image" v-bind:src='withBase(props.image_url ? props.image_url : "/")'  />
      </a>
-    <div :class="$style.image_divider" :href="props.url">
-        <a :class="$style.preview_image_link" :href="props.url">
+    <div :class="$style.image_divider" :href="withBase(props.url)">
+        <a :class="$style.preview_image_link" :href="withBase(props.url)">
          <p :class="$style.title + ' title'" style="margin: 12px"> {{ props.title }} </p>
          <div :class="$style.excerpt + ' body'" v-html="props.excerpt">  </div>
         </a>

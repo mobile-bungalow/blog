@@ -52,7 +52,7 @@
 </style>
 
 <script setup lang="ts">
-  import { useData } from 'vitepress'
+  import { withBase, useData } from 'vitepress'
   import { useCssModule } from 'vue'
   const $style = useCssModule()
   const { frontmatter } = useData()
@@ -72,10 +72,10 @@
         <a href="/collections.html"> collections </a>
       </div-->
       <div :class="style_link('games')">
-        <a href="/games.html"> games </a>
+        <a :href="withBase('/games.html')"> games </a>
       </div>
       <div :class="style_link('art')">
-        <a href="/art.html"> art </a>
+        <a :href="withBase('/art.html')"> art </a>
       </div>
       <a href="/">
         <img :class="$style.help" src="/assets/logo.svg" />
