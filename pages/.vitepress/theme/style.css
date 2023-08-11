@@ -55,7 +55,7 @@ body {
     padding-right: var(--m-l);
 }
 
-.language-glsl {
+.language-glsl, .language-gdscript {
     background-color: #3b3d3f;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;

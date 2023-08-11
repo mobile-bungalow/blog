@@ -14,7 +14,7 @@ excerpt: Games such as diablo and various action RPG's with isometric or top-dow
 ![diablo screen grab](/assets/diablo.webp)
 
 
-Action rpg's use a few visual tricks to make their top down camera less frustrating. Today I'm going to focus on three methods of dollhousing, or turning objects inbetween the player and camera transparent. 
+Action rpg's use a few visual tricks to make their top down camera less frustrating. Today I'm going to focus on three methods of dollhousing, or turning objects inbetween the player and camera transparent. The methods I've picked are generalizeable to multiple, dynamic, camera angles and require very little scene preperation and scripting to be leveraged effectively.
 
 ## Raycasting
 
@@ -68,7 +68,47 @@ Another option, often best combined with other methods, is the pinhole shader. T
 
 ### Common Augmentations and Issues
 
-To support a large number of onscreen items you must pass the screen space coordinates in a texture. updating every frame. This is not prohibitively slow if you don't reallocate, but becomes complex if you want to include more data than just the position for each actor. In the example above the projected distance along the ground is also passed to the shader and used to scale the fading effect. additionally a radius, or fade strength flag could be passed in the alpha channel of the texture. which leads me to the largest downfall of this method, most of the dollhousable items on screen will be transparent most of the time! This is the case in battlerite, where the effect is used to remove ornaments from the scene, but so aggressively that those ornaments are almost never visible unless the effect is toggled off.
+To support a large number of onscreen items you must pass the screen space coordinates in a texture. updating every frame. This is not prohibitively slow if you don't reallocate, but becomes complex if you want to include more data than just the position for each actor. Here is some example code of brute forcing this info into a texture.
+
+```gdscript
+extends Node3D
+
+var OnScreenActors: int = 0
+var ActorImage: Image
+var ActorCoordsTex: ImageTexture
+@onready var CameraWorld = $"%Camera3D"
+
+const TEXWIDTH : int = 255
+
+func _ready():
+	ActorImage = Image.create(TEXWIDTH, 1, false, Image.FORMAT_RGBAF)
+	ActorCoordsTex = ImageTexture.new()
+	ActorCoordsTex.set_image(ActorImage)
+	RenderingServer.global_shader_parameter_set("max_actors_on_screen", TEXWIDTH)
+
+func _update_shader_params():
+	var actors = get_tree().get_nodes_in_group("actors")	
+	OnScreenActors = actors.size()
+	var skipped = 0;
+	for i in actors.size():
+		var body = actors[i]
+		if (body is NPC && body.is_inside_hidden):
+			skipped += 1
+			continue;
+		var sp = CameraWorld.unproject_position(body.global_position)
+		ActorImage.set_pixel(i - skipped, 0, Color(sp.x, sp.y, 0))
+	
+	ActorCoordsTex.update(ActorImage)
+	RenderingServer.global_shader_parameter_set("screen_fade_coords", ActorCoordsTex)
+	RenderingServer.global_shader_parameter_set("run_length", OnScreenActors - skipped)
+
+func _process(_delta):
+	_update_shader_params()
+
+```
+
+
+ The largest problem with this method is that most of the scene is transparent unless it is combined with some other form of occlusion checking. This is the case in battlerite, where the effect is used to remove ornaments from the scene, but so aggressively that those ornaments are almost never visible unless the effect is toggled off. This effect is best reserved for small props such as flags or onnings that are purely visual, as it is hard to garner the fine grained control you can over the other methods.
 
 ## Conclusion
 
