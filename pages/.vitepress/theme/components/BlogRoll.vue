@@ -16,34 +16,37 @@
 </style>
 
 <script lang="ts" setup>
-  import {data as post_data} from '../post.data';
-  const $style = useCssModule();
+import {data as post_data} from '../post.data';
+const $style = useCssModule();
 import { ref,  useCssModule } from 'vue';
 import ArticleCard from './ArticleCard.vue';
 import ScrollableCenter from './ScrollableCenter.vue';
 const modal = ref<null|HTMLDivElement>(null);
 const filters = ref<string[]>([]);
-   function stop_filtering() {
-     if (modal.value) {
-        modal.value.className = $style["hidden"]
-     }
+
+function stop_filtering() {
+  if (modal.value) {
+     modal.value.className = $style["hidden"]
+  }
+ }
+
+function show_filter_modal() {
+   if (modal.value) {
+      modal.value.className = $style["filter_modal"]
+   }
+  }
+
+function add_filter(filter: string) {
+  if (!filters.value.includes(filter)) {
+    filters.value.push(filter);
+    show_filter_modal();
+  } else {
+    filters.value = filters.value.filter(item => item != filter);
+    if (filters.value.length == 0) {
+      stop_filtering
     }
-  function show_filter_modal() {
-     if (modal.value) {
-        modal.value.className = $style["filter_modal"]
-     }
-    }
-    function add_filter(filter: string) {
-      if (!filters.value.includes(filter)) {
-        filters.value.push(filter);
-        show_filter_modal();
-      } else {
-        filters.value = filters.value.filter(item => item != filter);
-        if (filters.value.length == 0) {
-          stop_filtering
-        }
-      }
-    }
+  }
+}
 </script>
 
 

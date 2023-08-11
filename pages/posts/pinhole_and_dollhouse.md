@@ -20,7 +20,7 @@ Action rpg's use a few visual tricks to make their top down camera less frustrat
 
 The first way I'll be demonstrating to achieve this effect is by simply casting rays into the scene from the camera origin towards any actors and applying an effect to any collided objects. I've provided a sample [godot project with a rough implementation here](https://github.com/mobile-bungalow/TransparencyDemo1). You can play it in browser below. The method below was achieved with simple raycasting in a semi-circle from the camera to the player and with single raycasts towards NPCs, using logic to toggle the raycasting off if the you wish to hide the NPC. On Ray collision, an instance shader parameter is animated on the effect mesh.
 
-<GameContainer mobile_compat="false" src="/game_packages/Demo_1_blog_1/index.html"/> 
+<GameContainer :mobile_compat=false src="/game_packages/Demo_1_blog_1/index.html"/> 
 
 ### Common Augmentations and Issues
 
@@ -37,7 +37,7 @@ We simply discard any collisions which fulfill the above criteria. This means th
 This method involves doing a second pass with a depth sensitive shader, and simply redrawing all occluded actors in a bright color on top of the props. In my opinion, this is the not very immersive unless your game includes some aspect of x-ray vision or extra sensory perception, in which case it should be stylized to reflect that. An example is playable below with the [source code linked here](https://github.com/mobile-bungalow/TransparencyDemo1/tree/x-ray).
 
 
-<GameContainer mobile_compat="false" src="/game_packages/Demo_2_blog_1/index.html"/> 
+<GameContainer :mobile_compat=false src="/game_packages/Demo_2_blog_1/index.html"/> 
 
 The shader code for such and effect is simple, add a second pass with any shader effect and discard fragments which are not overidden by the depth pass. see the following shader.
 
@@ -64,7 +64,7 @@ Besides being fairly immersion breaking, jumbles of things behind walls become h
 
 Another option, often best combined with other methods, is the pinhole shader. This takes the screen space coordinates of all actors and passes them to the mesh shader, then any fragments in a circle (or any SDF compatible shape) are either discarded or have their alpha's appropriately attenuated. An example is playable below [with source available here](https://github.com/mobile-bungalow/TransparencyDemo1/tree/pinhole). 
 
-<GameContainer mobile_compat="false" src="/game_packages/Demo_3_blog_1/index.html"/> 
+<GameContainer :mobile_compat=false src="/game_packages/Demo_3_blog_1/index.html"/> 
 
 ### Common Augmentations and Issues
 
