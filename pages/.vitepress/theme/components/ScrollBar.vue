@@ -30,7 +30,9 @@
 }
 </style>
 
-<script lang="ts">
+<script lang="ts" setup>
+  import { ref} from 'vue';
+
   let stop_select = (ev: Event) => {
     ev.preventDefault()
   }
@@ -39,41 +41,48 @@
     return Math.min(Math.max(input, min), max);
   };
 
-
-  export default {
-    emits: ["dragged_to"],
-    methods: {
-      on_target_scroll(event: Event) {
+  let thumb = ref<HTMLDivElement | undefined>(undefined);
+  let track = ref<HTMLDivElement | undefined>(undefined);
+  let emit = defineEmits(["dragged_to"]);
+  
+  const on_target_scroll = (event: Event) => {
       const element = event?.target as HTMLDivElement;
       const scrollTop = element.scrollTop;
       const scrollHeight = element.scrollHeight;
       const clientHeight = element.clientHeight;
-
       const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-      this.$refs.thumb.style.top = `${clamp(scrollPercentage - 2, 3.5, 90.5)}%`
-      },
-      trackClicked(ev: MouseEvent) {
-         var rect = (ev?.target as HTMLDivElement).getBoundingClientRect();
-         var y = ev.clientY - rect.top;
-         this.$emit("dragged_to", y / rect.height);
-      },
-      dragBegin(ev) {
-        document.addEventListener("mouseup", this.dragEnd);
-        document.addEventListener('selectstart', stop_select)
-        document.addEventListener("mousemove", this.dragging);
-      },
-      dragEnd(ev) {
-        document.removeEventListener("mouseup", this.dragEnd);
-        document.removeEventListener('selectstart', stop_select)
-        document.removeEventListener("mousemove", this.dragging);
-      },
-      dragging(ev) {
-         var rect = (this.$refs.track as HTMLDivElement).getBoundingClientRect();
-         var y = ev.clientY - rect.top;
-         this.$emit("dragged_to", clamp(y / rect.height, 0, 1));
+        if (thumb.value != undefined) {
+          thumb.value.style.top = `${clamp(scrollPercentage - 2, 3.5, 90.5)}%`
+        }
       }
-    }
+
+  const trackClicked = (event: MouseEvent) => {
+         var rect = (event?.target as HTMLDivElement).getBoundingClientRect();
+         var y = event.clientY - rect.top;
+         emit("dragged_to", y / rect.height);
+      }
+
+  const dragBegin = (_event) => {
+        document.addEventListener("mouseup", dragEnd);
+        document.addEventListener('selectstart', stop_select)
+        document.addEventListener("mousemove", dragging);
   }
+
+  const dragEnd = (_ev) => {
+        document.removeEventListener("mouseup", dragEnd);
+        document.removeEventListener('selectstart', stop_select)
+        document.removeEventListener("mousemove", dragging);
+  }
+
+  const dragging = (ev) => {
+         var rect = (track.value as HTMLDivElement).getBoundingClientRect();
+         var y = ev.clientY - rect.top;
+         emit("dragged_to", clamp(y / rect.height, 0, 1));
+  }
+
+  defineExpose({
+    on_target_scroll
+  })
 </script>
 
 
