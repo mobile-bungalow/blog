@@ -41,28 +41,30 @@
 <script lang="ts" setup>
   import ScrollBar from './ScrollBar.vue';
   import { useData } from 'vitepress';
+  import { ref } from 'vue';
   let { frontmatter } = useData();
 
-</script>
-<script lang="ts">
-export default {
-  methods: {
-    update_scrollY(ratio: number) {
-      const scrollContainer = this.$refs.scroll_area;
+  let scrollbar = ref< typeof ScrollBar|undefined>(undefined);
+  let scroll_area = ref<HTMLDivElement|undefined>(undefined);
+
+  const update_scrollY = (ratio: number) => {
+    if (scroll_area.value != undefined) {
+      const scrollContainer = scroll_area.value;
       const scrollHeight = scrollContainer.scrollHeight;
       const clientHeight = scrollContainer.clientHeight;
       const maxScrollTop = scrollHeight - clientHeight;
       const scrollTop = ratio * maxScrollTop;
-      this.$refs.scroll_area.scrollTo({ top: scrollTop });
-    },
-  },
-}
+      scrollContainer.scrollTo({ top: scrollTop });
+    }
+  }
+
+defineExpose({ update_scrollY });
 </script>
 
 
 <template>
   <div  :class='$style.blogroll_wrapper'>
-    <div ref="scroll_area" @scroll="(e) => { this.$refs.scrollbar.on_target_scroll(e) }" :class="$style.blogroll">
+    <div ref="scroll_area" @scroll="(e) => { scrollbar?.value.on_target_scroll(e) }" :class="$style.blogroll">
       <div :class="$style[frontmatter.layout]">
         <slot></slot>
         </div>
