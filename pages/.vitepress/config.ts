@@ -7,6 +7,7 @@ export default defineConfig({
   },
   title: "Concentrated Bursts",
   description: "the personal site of Paul May.",
+  base: "/blog",
   vite: {
     server: {
       headers: {
