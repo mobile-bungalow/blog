@@ -4,6 +4,7 @@
         min-height: 450px;
         flex-grow: 1;
         margin: var(--m-m);
+        background: black;
     }
 
     .preview {
