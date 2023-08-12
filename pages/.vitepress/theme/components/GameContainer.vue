@@ -61,6 +61,10 @@
         display: flex;
     }
 
+    .preview {
+        display: none;
+    }
+
     .iframe_de {
         display: none;
     }
@@ -94,7 +98,7 @@
             <button v-if="!playing" @click="playing = true" :class="$style.play">⏵</button>
         </div>
     <iframe v-if="playing" :class="$style.iframe + ' ' + $style.iframe_de" :src="withBase(props.src)"/>
-    <div v-if="playing" :class="!mobile_compat ?  $style.concillation : $style.no_show">
+    <div :class="!mobile_compat ?  $style.concillation : $style.no_show">
         <p> I'm Sorry, this game was not meant to be played on a mobile viewport </p>
     </div>
     </div>

@@ -28,6 +28,11 @@
 }
 
 @media only screen and (max-width: 868px) {
+    .preview_image {
+        max-height: 150px;
+        object-fit: fill;
+        width: 100%;
+    }
     .image_divider {
        border-left: none; 
     }
