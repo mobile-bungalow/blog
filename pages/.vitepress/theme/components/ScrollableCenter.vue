@@ -3,7 +3,6 @@
 .blogroll {
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: var(--m-m);
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
@@ -14,9 +13,9 @@
 
 .blogroll_wrapper {
     display: flex;
+    margin-left: 3vw;
+    margin-right: 3vw;
     flex-direction: row;
-    margin-right: var(--m-l);
-    margin-left: var(--m-l);
     max-height: calc(100% - var(--nav-bar-height));
     
 }
@@ -30,14 +29,6 @@
 @media only screen and (max-width: 868px) {
     .collections {
         grid-template-columns: 1fr;
-    }
-
-    .blogroll {
-      margin: 0px;
-    }
-    .blogroll_wrapper {
-      margin-left: 0px;
-      margin-right: 0px;
     }
 }
 

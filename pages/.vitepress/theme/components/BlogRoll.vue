@@ -13,6 +13,9 @@
     left: 50%;
   }
 
+.spacer {
+  height: 3vw;
+}
 </style>
 
 <script lang="ts" setup>
@@ -51,6 +54,7 @@ function add_filter(filter: string) {
 
 <template>
     <ScrollableCenter>
+      <div :class="$style.spacer"></div>
           <ArticleCard @filter-tag-clicked="(e) => add_filter(e)" 
                       v-for="post in post_data.filter((a) => a.tags.some(r => filters.length == 0 ? true : filters.includes(r)))" 
                       :filter_tags="filters"

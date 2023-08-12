@@ -5,7 +5,6 @@
    border: 1px solid var(--line-color);
    margin-bottom: var(--m-xl);
    max-width: 900px;
-   transition: background-image 3s;
 }
 .preview_image {
     min-width: 180px;
@@ -27,7 +26,7 @@
     text-decoration: none;
 }
 
-@media only screen and (max-width: 868px) {
+@media only screen and (max-width: 1000px) {
     .preview_image {
         max-height: 150px;
         width: 100%;
@@ -35,9 +34,6 @@
     }
     .image_divider {
        border-left: none; 
-    }
-    .article_preview {
-        margin-left: var(--m-xl);
     }
     .preview_image {
         display: none;
@@ -47,20 +43,8 @@
 
 @media only screen and (max-width: 669px) {
 
-    .preview_image {
-        display: block;
-        max-width: 100%;
-    }
-
-
     .article_preview {
         flex-direction: column;
-        margin-left: 0px;
-        margin-right: var(--m-xl);
-    }
-
-    .image_divider {
-        border-top: 1px solid var(--line-color)
     }
 }
 .date_and_tags {

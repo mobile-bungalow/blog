@@ -3,7 +3,6 @@ import Logo from './Logo.vue';
 import Description from './Description.vue';
 import ExternalLinks from './ExternalLinks.vue';
 import NavBar from './NavBar.vue';
-
 </script>
 
 <style module>
@@ -19,9 +18,9 @@ import NavBar from './NavBar.vue';
     flex: 1 4 1;
     max-width: 1600px;
     height: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    padding-right: var(--m-m);
     justify-content: center;
+    margin: auto;
 
 }
 
@@ -45,14 +44,9 @@ import NavBar from './NavBar.vue';
 
 @media only screen and (max-width: 669px) {
 
-    .logo_column {
-        display: none;
-    }
-
-    .center_content {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+ .logo_column {
+     display: none;
+ }
 
   .main_layout {
     display: flex;

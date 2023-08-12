@@ -10,7 +10,6 @@
    border-top: 1px solid var(--line-color)
 }
 
-
 .date_and_tags {
     display: flex;
     justify-content: space-between;
@@ -20,7 +19,6 @@
 .title {
     text-align: center;
 }
-
 .excerpt {
     margin-right: var(--m-xl);
     margin-left: var(--m-xl);

@@ -1,9 +1,9 @@
 <style module>
-.scrollbar {
-    height: 100%;
-    width: min(5vw, 30px);
-}
 
+:root {
+  --thumb-width: min(10px, 1vw);
+  --thumb-height: min(40px, 5vh);
+}
 .rel_wrapper {
     position: relative;
 }
@@ -11,22 +11,23 @@
 .track {
     position: absolute;
     border-right: 2px solid var(--line-color);
+    left: var(--thumb-width);
     top: 1%;
-    height: 96%;
     bottom: 1%;
 }
 
 .thumb {
    position: absolute;
    cursor: pointer;
-   width: 10px;
-   left: -5px;
+   left: calc(var(--thumb-width) / 2);
+   width: var(--thumb-width);
    top: 3.5%;
-   height: 40px;
+   height: var(--thumb-height);
    background-color: var(--fill-color);
    box-shadow: 1.5px 1.5px var(--line-color);
    z-index: 2;
 }
+
 </style>
 
 <script lang="ts" setup>

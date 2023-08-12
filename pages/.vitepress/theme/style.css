@@ -12,6 +12,7 @@
     --title-size: min(5vw, 28px);
     --body-size: min(3.5vw, 16px);
     --title-font-family: "Franklin";
+    --full-height: 100%;
     --m-sm: 4px;
     --m-m: 12px;
     --m-l: 20px;
@@ -24,14 +25,15 @@ html[data-theme="light"] {
     --fill-color: #459599;
 }
 
-html {
+
+html, body {
+    background-image: var(--bg-color);
+    height: 100vh;
+    height: var(--full-height);
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-body {
-    background-image: var(--bg-color);
-    min-height: 98.5vh;
-}
 
 .title {
     font-family: var(--title-font-family);
@@ -45,7 +47,6 @@ body {
     margin-right: var(--m-m);
 }
 
-
 .body {
     font-family: var(--title-font-family);
     color: var(--line-color);
@@ -57,8 +58,6 @@ body {
 .content {
     display: flex;
     flex-direction: column;
-    padding-left: var(--m-l);
-    padding-right: var(--m-l);
 }
 
 .language-glsl, .language-gdscript {
