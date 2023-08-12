@@ -56,12 +56,17 @@
 
 .title {
     text-align: center;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .excerpt {
     margin-right: var(--m-xl);
     margin-left: var(--m-xl);
     margin-bottom: var(--m-m);
+    font-size: 1rem;
+    color: var(--line-color);
+    font-family: var(--title-font-family);
 }
 
 .tags {
@@ -147,8 +152,8 @@ let props = defineProps<previewProps>()
      </a>
     <div :class="$style.image_divider" :href="withBase(props.url)">
         <a :class="$style.preview_image_link" :href="withBase(props.url)">
-         <p :class="$style.title + ' title'" style="margin: 12px"> {{ props.title }} </p>
-         <div :class="$style.excerpt + ' body'" v-html="props.excerpt">  </div>
+         <p :class="$style.title" style="margin: 12px"> {{ props.title }} </p>
+         <div :class="$style.excerpt" v-html="props.excerpt">  </div>
         </a>
       <div :class="$style.date_and_tags">
         <div :class="$style.tags"> 
