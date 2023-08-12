@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: Franklin;
+  src: url(/blog/LibreFranklin-VariableFont_wght.ttf);
+}
+
 :root {
     --bg-color: linear-gradient(#2b2d30 50%, #383838 100%);
     --nav-bar-height: 96px;
@@ -6,7 +11,7 @@
     --fill-color: #459599;
     --title-size: min(5vw, 28px);
     --body-size: min(3.5vw, 16px);
-    --title-font-family: "Franklin Gothic Medium";
+    --title-font-family: "Franklin";
     --m-sm: 4px;
     --m-m: 12px;
     --m-l: 20px;
@@ -32,6 +37,7 @@ body {
     font-family: var(--title-font-family);
     color: var(--line-color);
     font-size: var(--title-size);
+    font-weight: 700;
     line-height: var(--title-size);
     margin-top: auto;
     margin-bottom: auto;
