@@ -68,6 +68,18 @@
         document.addEventListener("mousemove", dragging);
   }
 
+  const touchBegin = (_event) => {
+        document.addEventListener("touchend", touchEnd);
+        document.addEventListener('selectstart', stop_select)
+        document.addEventListener("touchmove", dragging);
+  }
+
+  const touchEnd = (_event) => {
+        document.removeEventListener("touchend", touchEnd);
+        document.removeEventListener('selectstart', stop_select)
+        document.removeEventListener("touchmove", dragging);
+  }
+
   const dragEnd = (_ev) => {
         document.removeEventListener("mouseup", dragEnd);
         document.removeEventListener('selectstart', stop_select)
@@ -90,7 +102,7 @@
   <div  :class="$style.rel_wrapper" >
     <div @click="trackClicked" :class="$style.scrollbar">
       <div ref="track" :class="$style.track" />
-      <div ref="thumb" @mousedown="dragBegin" :class="$style.thumb"/>
+      <div ref="thumb" @touchstart="touchBegin" @mousedown="dragBegin" :class="$style.thumb"/>
     </div>
   </div>
 </template>

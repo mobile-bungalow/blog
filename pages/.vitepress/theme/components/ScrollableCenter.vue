@@ -2,6 +2,7 @@
 
 .blogroll {
     overflow-y: scroll;
+    overflow-x: hidden;
     margin: var(--m-m);
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
