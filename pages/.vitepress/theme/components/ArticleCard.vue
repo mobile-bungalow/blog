@@ -45,6 +45,7 @@
 
     .article_preview {
         flex-direction: column;
+        margin-right: 2.2vw;
     }
 }
 .date_and_tags {

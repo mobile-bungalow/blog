@@ -1,17 +1,17 @@
 <style module>
 
 :root {
-  --thumb-width: min(10px, 1vw);
+  --thumb-width: min(10px, 2vw);
   --thumb-height: min(40px, 5vh);
 }
 .rel_wrapper {
     position: relative;
+    left: calc(3.1vw - var(--thumb-width));
 }
 
 .track {
     position: absolute;
     border-right: 2px solid var(--line-color);
-    left: var(--thumb-width);
     top: 1%;
     bottom: 1%;
 }
@@ -19,8 +19,8 @@
 .thumb {
    position: absolute;
    cursor: pointer;
-   left: calc(var(--thumb-width) / 2);
    width: var(--thumb-width);
+   left: calc(-1 * var(--thumb-width) / 2);
    top: 3.5%;
    height: var(--thumb-height);
    background-color: var(--fill-color);
