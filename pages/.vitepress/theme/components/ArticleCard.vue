@@ -51,8 +51,12 @@
         display: block;
         max-width: 100%;
     }
+
+
     .article_preview {
         flex-direction: column;
+        margin-left: 0px;
+        margin-right: var(--m-xl);
     }
 
     .image_divider {

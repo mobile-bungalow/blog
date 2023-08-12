@@ -11,7 +11,6 @@
 .track {
     position: absolute;
     border-right: 2px solid var(--line-color);
-    left: min(2.5vw, 15px);
     top: 1%;
     height: 96%;
     bottom: 1%;
@@ -20,12 +19,12 @@
 .thumb {
    position: absolute;
    cursor: pointer;
-   width: min(3vw, 10px);
+   width: 10px;
+   left: -5px;
    top: 3.5%;
    height: 40px;
    background-color: var(--fill-color);
    box-shadow: 1.5px 1.5px var(--line-color);
-   left: min(1.2vw, 10px);
    z-index: 2;
 }
 </style>

@@ -7,7 +7,6 @@
     gap: var(--m-l);
     width: 100%;
     margin-top: var(--m-xl);
-    margin-bottom: 42px;
     font-family: var(--title-font-family);
     color: var(--line-color);
     font-size: var(--title-size);
@@ -26,7 +25,8 @@
 
 
 .navbar_wrapper {
-    height: 102px;
+    height: var(--nav-bar-height);
+    margin-right: var(--m-m);
     border-image-slice: 27 23 27 23;
     border-image-width: 20px 20px 20px 20px;
     border-image-outset: 0px 0px 0px 0px;

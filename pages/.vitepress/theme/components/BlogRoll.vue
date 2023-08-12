@@ -35,7 +35,6 @@ function show_filter_modal() {
       modal.value.className = $style["filter_modal"]
    }
   }
-
 function add_filter(filter: string) {
   if (!filters.value.includes(filter)) {
     filters.value.push(filter);
