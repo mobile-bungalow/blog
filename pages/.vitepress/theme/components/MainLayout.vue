@@ -46,6 +46,15 @@ import NavBar from './NavBar.vue';
         display: flex;
         flex-direction: column-reverse;
     }
+
+  .main_layout {
+    display: flex;
+    max-width: 1600px;
+    height: 98vh;
+    margin-left: 0px;
+    margin-right: 0px;
+    justify-content: center;
+  }
 }
 </style>
 

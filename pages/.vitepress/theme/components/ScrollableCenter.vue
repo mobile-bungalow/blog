@@ -3,9 +3,6 @@
 .blogroll {
     overflow-y: scroll;
     margin: var(--m-m);
-}
-
-.blogroll{
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
@@ -32,6 +29,14 @@
 @media only screen and (max-width: 868px) {
     .collections {
         grid-template-columns: 1fr;
+    }
+
+    .blogroll {
+      margin: 0px;
+    }
+    .blogroll_wrapper {
+      margin-left: 0px;
+      margin-right: 0px;
     }
 }
 

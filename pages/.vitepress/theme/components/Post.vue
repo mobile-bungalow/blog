@@ -20,7 +20,7 @@
     }
 
     p {
-        size: var(--body-size);
+        font-size: var(--body-size);
         color: var(--line-color);
         font-family: var(--title-font-family);
         line-height: var(--m-xl);

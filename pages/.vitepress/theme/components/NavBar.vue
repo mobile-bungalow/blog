@@ -45,6 +45,10 @@
         margin-bottom: 0px;
     }
 
+    .navbar_wrapper {
+      height: 70px;
+    }
+
     .help {
         display: block;
     }
