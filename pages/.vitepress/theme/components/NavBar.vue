@@ -1,62 +1,62 @@
 <style module>
-
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-self: center;
-    gap: var(--m-l);
-    width: 100%;
-    margin-top: var(--m-xl);
-    font-family: var(--title-font-family);
-    color: var(--line-color);
-    font-size: var(--title-size);
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  gap: var(--m-l);
+  width: 100%;
+  margin-top: var(--m-xl);
+  font-family: var(--title-font-family);
+  color: var(--line-color);
+  font-size: var(--title-size);
 }
 
-.page_link > a {
-    text-decoration: none;
-    color: var(--line-color);
+.page_link>a {
+  text-decoration: none;
+  color: var(--line-color);
 }
 
-.current_link > a {
-    color: var(--line-color);
-    text-decoration: underline;
+.current_link>a {
+  color: var(--line-color);
+  text-decoration: underline;
 }
 
 
 .navbar_wrapper {
-    height: var(--nav-bar-height);
-    border-image-slice: 27 23;
-    border-image-width: 20px;
-    border-image-repeat: stretch stretch;
-    border-image-source:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='46' viewBox='0 0 35 46'%3E%3Cg id='Group_36' data-name='Group 36' transform='translate(-383 -93)'%3E%3Cpath id='Path_26' data-name='Path 26' d='M0-2.175V10' transform='translate(390 129)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cg id='Group_35' data-name='Group 35'%3E%3Cline id='Line_21' data-name='Line 21' y2='17' transform='translate(390 93)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_22' data-name='Line 22' y2='17' transform='translate(410 93)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_19' data-name='Line 19' x1='12' transform='translate(383 134)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cpath id='Path_27' data-name='Path 27' d='M0-2.175V10' transform='translate(411 129)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_20' data-name='Line 20' x2='12' transform='translate(406 134)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");;
-    border-style: solid; 
+  height: var(--nav-bar-height);
+  border-image-slice: 27 23;
+  border-image-width: 20px;
+  border-image-repeat: stretch stretch;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='46' viewBox='0 0 35 46'%3E%3Cg id='Group_36' data-name='Group 36' transform='translate(-383 -93)'%3E%3Cpath id='Path_26' data-name='Path 26' d='M0-2.175V10' transform='translate(390 129)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cg id='Group_35' data-name='Group 35'%3E%3Cline id='Line_21' data-name='Line 21' y2='17' transform='translate(390 93)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_22' data-name='Line 22' y2='17' transform='translate(410 93)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_19' data-name='Line 19' x1='12' transform='translate(383 134)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cpath id='Path_27' data-name='Path 27' d='M0-2.175V10' transform='translate(411 129)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3Cline id='Line_20' data-name='Line 20' x2='12' transform='translate(406 134)' fill='none' stroke='%23f7f1e5' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  ;
+  border-style: solid;
 }
 
 .help {
-    max-height: min(32px, 4.5vh);
-    display: none;
+  max-height: min(32px, 4.5vh);
+  display: none;
 }
 
 @media only screen and (max-width: 669px) {
-    .navbar_wrapper {
-      height: 70px;
-    }
+  .navbar_wrapper {
+    height: 70px;
+  }
 
-    .help {
-        display: block;
-    }
+  .help {
+    display: block;
+  }
 }
 </style>
 
 <script setup lang="ts">
-  import { withBase, useData } from 'vitepress'
-  import { useCssModule } from 'vue'
-  const $style = useCssModule()
-  const { frontmatter } = useData()
+import { withBase, useData } from 'vitepress'
+import { useCssModule } from 'vue'
+const $style = useCssModule()
+const { frontmatter } = useData()
 
-  let style_link = (link_name: string) => {
-    return frontmatter.value.layout != link_name ? $style.page_link : $style.current_link;
-  }
+let style_link = (link_name: string) => {
+  return frontmatter.value.layout != link_name ? $style.page_link : $style.current_link;
+}
 </script>
 
 <template>
@@ -66,8 +66,8 @@
         <a href="/"> blog</a>
       </div>
       <!--div :class="style_link('collections')">
-        <a href="/collections.html"> collections </a>
-      </div-->
+          <a href="/collections.html"> collections </a>
+        </div-->
       <div :class="style_link('games')">
         <a :href="withBase('/games.html')"> games </a>
       </div>

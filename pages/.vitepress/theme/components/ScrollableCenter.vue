@@ -1,70 +1,70 @@
 <style module>
-
 .blogroll {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.blogroll::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+.blogroll::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 .blogroll_wrapper {
-    display: flex;
-    margin-left: 3vw;
-    margin-right: 3vw;
-    flex-direction: row;
-    max-height: calc(100% - var(--nav-bar-height));
-    
+  display: flex;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  flex-direction: row;
+  max-height: calc(100% - var(--nav-bar-height));
+
 }
 
 .collections {
-    display: grid; 
-    grid-template-columns: 1fr 1fr;
-    gap: var(--m-m);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--m-m);
 }
 
 @media only screen and (max-width: 868px) {
-    .collections {
-        grid-template-columns: 1fr;
-    }
+  .collections {
+    grid-template-columns: 1fr;
+  }
 }
-
-
 </style>
 
 <script lang="ts" setup>
-  import ScrollBar from './ScrollBar.vue';
-  import { useData } from 'vitepress';
-  import { ref } from 'vue';
-  let { frontmatter } = useData();
+import ScrollBar from './ScrollBar.vue';
+import { useData } from 'vitepress';
+import { ref } from 'vue';
+let { frontmatter } = useData();
 
-  let scrollbar = ref<any|undefined>(undefined);
-  let scroll_area = ref<HTMLDivElement|undefined>(undefined);
+let scrollbar = ref<any | undefined>(undefined);
+let scroll_area = ref<HTMLDivElement | undefined>(undefined);
 
-  const update_scrollY = (ratio: number) => {
-    if (scroll_area.value != undefined) {
-      const scrollContainer = scroll_area.value;
-      const scrollHeight = scrollContainer.scrollHeight;
-      const clientHeight = scrollContainer.clientHeight;
-      const maxScrollTop = scrollHeight - clientHeight;
-      const scrollTop = ratio * maxScrollTop;
-      scrollContainer.scrollTo({ top: scrollTop });
-    }
+const update_scrollY = (ratio: number) => {
+  if (scroll_area.value != undefined) {
+    const scrollContainer = scroll_area.value;
+    const scrollHeight = scrollContainer.scrollHeight;
+    const clientHeight = scrollContainer.clientHeight;
+    const maxScrollTop = scrollHeight - clientHeight;
+    const scrollTop = ratio * maxScrollTop;
+    scrollContainer.scrollTo({ top: scrollTop });
   }
+}
 
 defineExpose({ update_scrollY });
 </script>
 
 
 <template>
-  <div  :class='$style.blogroll_wrapper'>
+  <div :class='$style.blogroll_wrapper'>
     <div ref="scroll_area" @scroll="(e) => { scrollbar.on_target_scroll(e) }" :class="$style.blogroll">
       <div :class="$style[frontmatter.layout]">
         <slot></slot>
-        </div>
+      </div>
     </div>
     <ScrollBar @dragged_to="update_scrollY" ref="scrollbar"></ScrollBar>
   </div>

@@ -13,40 +13,41 @@ import NavBar from './NavBar.vue';
   overflow-y: hidden;
   overflow-x: hidden;
 }
+
 .main_layout {
-    display: flex;
-    flex: 1 4 1;
-    max-width: 1600px;
-    height: 95%;
-    padding-right: var(--m-m);
-    justify-content: center;
-    margin: auto;
+  display: flex;
+  flex: 1 4 1;
+  max-width: 1600px;
+  height: 95%;
+  padding-right: var(--m-m);
+  justify-content: center;
+  margin: auto;
 
 }
 
 .logo_column {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: 300px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 300px;
+  justify-content: space-between;
 }
 
 .center_content {
-    display: flex;
-    flex-direction: column;
-    min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
 }
 
 .title {
-    align-self: center;
+  align-self: center;
 }
 
 @media only screen and (max-width: 669px) {
 
- .logo_column {
-     display: none;
- }
+  .logo_column {
+    display: none;
+  }
 
   .main_layout {
     display: flex;
@@ -61,19 +62,19 @@ import NavBar from './NavBar.vue';
 
 <template>
   <div :class="$style.wrapper">
-  <div :class='$style.main_layout'>
-    <div :class='$style.logo_column'>
-      <div>
-        <Logo></Logo>
-        <Description></Description>
+    <div :class='$style.main_layout'>
+      <div :class='$style.logo_column'>
+        <div>
+          <Logo></Logo>
+          <Description></Description>
+        </div>
+        <ExternalLinks />
       </div>
-      <ExternalLinks />
+      <div :class='$style.center_content'>
+        <NavBar />
+        <slot></slot>
+      </div>
+      <div :class='$style.right_content' />
     </div>
-    <div :class='$style.center_content'>
-      <NavBar/>
-      <slot></slot>
-    </div>
-    <div :class='$style.right_content' />
-  </div>
   </div>
 </template>

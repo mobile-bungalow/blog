@@ -1,16 +1,17 @@
 <style module>
 .article_preview {
-   display: flex; 
-   flex: 1 3;
-   border: 1px solid var(--line-color);
-   margin-bottom: var(--m-xl);
-   max-width: 900px;
+    display: flex;
+    flex: 1 3;
+    border: 1px solid var(--line-color);
+    margin-bottom: var(--m-xl);
+    max-width: 900px;
 }
+
 .preview_image {
     min-width: 180px;
     max-width: 250px;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
     align-self: center;
     justify-self: center;
     cursor: pointer;
@@ -18,8 +19,8 @@
 
 
 .image_divider {
-   border-left: 1px solid var(--line-color);
-   text-decoration: none;
+    border-left: 1px solid var(--line-color);
+    text-decoration: none;
 }
 
 .preview_image_link {
@@ -32,9 +33,11 @@
         width: 100%;
         object-fit: fill;
     }
+
     .image_divider {
-       border-left: none; 
+        border-left: none;
     }
+
     .preview_image {
         display: none;
     }
@@ -48,6 +51,7 @@
         margin-right: 2.2vw;
     }
 }
+
 .date_and_tags {
     display: flex;
     justify-content: space-between;
@@ -84,12 +88,12 @@
     margin-left: var(--m-m);
     font-size: var(--boy-size);
     /* dude what the fuck */
-  -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-     -khtml-user-select: none; 
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     cursor: pointer;
 }
 
@@ -102,12 +106,12 @@
     padding: 2px;
     cursor: pointer;
     /* dude what the fuck */
-  -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-     -khtml-user-select: none; 
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .date {
@@ -118,7 +122,7 @@
 }
 
 
-.date > p {
+.date>p {
     position: relative;
     text-align: center;
     color: var(--line-color);
@@ -146,27 +150,26 @@ let props = defineProps<previewProps>()
 </script>
 
 <template>
-  <div :class="$style.article_preview" >
-     <a  :class="$style.preview_image_link" :href="withBase(props.url)" >
-      <img :class="$style.preview_image" v-bind:src='withBase(props.image_url ? props.image_url : "/")'  />
-     </a>
-    <div :class="$style.image_divider" :href="withBase(props.url)">
+    <div :class="$style.article_preview">
         <a :class="$style.preview_image_link" :href="withBase(props.url)">
-         <p :class="$style.title" style="margin: 12px"> {{ props.title }} </p>
-         <div :class="$style.excerpt" v-html="props.excerpt">  </div>
+            <img :class="$style.preview_image" v-bind:src='withBase(props.image_url ? props.image_url : "/")' />
         </a>
-      <div :class="$style.date_and_tags">
-        <div :class="$style.tags"> 
-            <a  v-for="tag in props.tags"  
-                @click="$emit('filterTagClicked', tag)" 
-                :class='props.filter_tags.includes(tag) ? $style.selected_tag: $style.tag'>
-                 {{ "#" + tag  }} 
+        <div :class="$style.image_divider" :href="withBase(props.url)">
+            <a :class="$style.preview_image_link" :href="withBase(props.url)">
+                <p :class="$style.title" style="margin: 12px"> {{ props.title }} </p>
+                <div :class="$style.excerpt" v-html="props.excerpt"> </div>
             </a>
+            <div :class="$style.date_and_tags">
+                <div :class="$style.tags">
+                    <a v-for="tag in props.tags" @click="$emit('filterTagClicked', tag)"
+                        :class='props.filter_tags.includes(tag) ? $style.selected_tag : $style.tag'>
+                        {{ "#" + tag }}
+                    </a>
+                </div>
+                <div :class="$style.date">
+                    <p> {{ props.date }} </p>
+                </div>
+            </div>
         </div>
-        <div :class="$style.date">
-          <p> {{ props.date }} </p>
-        </div>
-      </div>
     </div>
-  </div>
 </template>

@@ -1,9 +1,9 @@
 <style module>
-    .wrapper {
-        position: relative;
-        margin: auto;
-        text-align: center;
-    }
+.wrapper {
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
 </style>
 
 <template>
