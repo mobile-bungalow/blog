@@ -5,6 +5,7 @@
     "docs:preview": "vitepress preview pages"
   },
   "dependencies": {
+    "highlight.js": "^11.9.0",
     "tweak_shader_web": "file:pages/packages/pkg",
     "vitepress": "^1.0.0-beta.6",
     "vue": "^3.3.4"
