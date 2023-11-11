@@ -1,29 +1,44 @@
 {
-  "hash": "fd1d77f8",
-  "browserHash": "b0b65f71",
+  "hash": "2559f1af",
+  "browserHash": "68a7ef9c",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "57209f64",
+      "fileHash": "e36c03e9",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "1b56bc99",
+      "fileHash": "fbf2b61e",
       "needsInterop": false
     },
-    "highlight.js": {
-      "src": "../../../../node_modules/highlight.js/es/index.js",
-      "file": "highlight__js.js",
-      "fileHash": "20891e4b",
+    "vue-codemirror": {
+      "src": "../../../../node_modules/vue-codemirror/dist/vue-codemirror.esm.js",
+      "file": "vue-codemirror.js",
+      "fileHash": "fe63853a",
+      "needsInterop": false
+    },
+    "@codemirror/theme-one-dark": {
+      "src": "../../../../node_modules/@codemirror/theme-one-dark/dist/index.js",
+      "file": "@codemirror_theme-one-dark.js",
+      "fileHash": "b06b2f75",
+      "needsInterop": false
+    },
+    "@codemirror/lang-cpp": {
+      "src": "../../../../node_modules/@codemirror/lang-cpp/dist/index.js",
+      "file": "@codemirror_lang-cpp.js",
+      "fileHash": "2f5c7f32",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-UXIASGQL": {
-      "file": "chunk-UXIASGQL.js"
+    "chunk-3454VYDT": {
+      "file": "chunk-3454VYDT.js"
+    },
+    "chunk-V634PGSD": {
+      "file": "chunk-V634PGSD.js"
     }
   }
 }
