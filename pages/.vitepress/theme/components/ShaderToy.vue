@@ -88,7 +88,6 @@
 }
 
 @media screen and (max-width: 820px) {
-
     .flipper {
         flex-direction: column-reverse;
     }
@@ -131,6 +130,7 @@ interface input {
     max: any,
 }
 
+
 var show_code = ref<boolean>(false);
 var show_controls = ref<boolean>(false);
 var inputs = ref<input[]>([]);
@@ -139,6 +139,7 @@ var toy = ref<null | HTMLIFrameElement>(null);
 var select = ref<null | HTMLSelectElement>(null);
 const tx = ref<null | MessageQueue>(null);
 const list = ref<null | InputList>(null);
+const error = ref<string>("");
 
 const reload_ui = (list: Input[]) => {
     var arr: input[] = [];
@@ -157,6 +158,7 @@ const reload_ui = (list: Input[]) => {
 }
 
 const recompile = () => {
+    error.value = "";
     tx.value?.reload_code(src.value);
     if (list.value !== null) {
         reload_ui(list.value.inputs());
@@ -178,11 +180,16 @@ const reload = () => {
     }
 }
 
+const show_compile_error = (e: string) => {
+    error.value = e;
+}
+
 const iframe_loaded = (e) => {
     let win = e.target.contentWindow.window;
     e.target.contentWindow.window.init_callback = () => {
         tx.value = win.global_tx;
         list.value = win.global_input_list;
+        win.error_callback = show_compile_error;
         win.global_input_list.on_update(() => {
             if (list.value !== null) {
                 reload_ui(list.value.inputs());
@@ -214,7 +221,7 @@ const iframe_loaded = (e) => {
             </div>
         </div>
         <div :class="$style.wrapper">
-            <iframe scrolling="no" ref="toy" seamless id="frame" @load="iframe_loaded" :class="$style.iframe"
+            <iframe scrolling="no" ref="toy" seamless id="frame" @load="(e) => { iframe_loaded(e); }" :class="$style.iframe"
                 :src="withBase('/game_packages/shader_toy/index.html')" />
 
             <form v-if="show_controls" ref="controls" :class="$style.controls">
@@ -227,5 +234,9 @@ const iframe_loaded = (e) => {
             <Codemirror v-if="show_code" v-model="src" :extensions="[[oneDark, cpp()]]" :class="$style.code">
             </Codemirror>
         </div>
+    </div>
+
+    <div :class="$style.error">
+        <pre :class="$style.error_text">{{ error }}</pre>
     </div>
 </template>
