@@ -87,6 +87,16 @@
     flex-direction: column;
 }
 
+.error {
+    background-color: #c0c0c0;
+    width: 95%;
+    margin: auto;
+}
+
+.error_text {
+    color: rgb(225, 15, 15);
+}
+
 @media screen and (max-width: 820px) {
     .flipper {
         flex-direction: column-reverse;
@@ -237,6 +247,6 @@ const iframe_loaded = (e) => {
     </div>
 
     <div :class="$style.error">
-        <pre :class="$style.error_text">{{ error }}</pre>
+        <p :class="$style.error_text">{{ error }}</p>
     </div>
 </template>
