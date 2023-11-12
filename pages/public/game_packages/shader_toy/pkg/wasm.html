@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebAssembly Demo</title>
+</head>
+<body>
+  <h1>WebAssembly Demo</h1>
+  <script>
+    // Import your WebAssembly module
+    import init from './pkg/my_wasm_lib.js';
+
+    async function run() {
+      // Initialize the WebAssembly module
+      const wasm = await init();
+
+      // Call functions from your WebAssembly library
+      const result = wasm.my_wasm_function();
+
+      // Display the result on the webpage
+      document.querySelector('h1').textContent = `Result: ${result}`;
+    }
+
+    run();
+  </script>
+</body>
+</html>

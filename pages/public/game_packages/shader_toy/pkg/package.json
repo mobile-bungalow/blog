@@ -1,0 +1,14 @@
+{
+  "name": "tweak_shader_web",
+  "version": "0.1.0",
+  "files": [
+    "tweak_shader_web_bg.wasm",
+    "tweak_shader_web.js",
+    "tweak_shader_web.d.ts"
+  ],
+  "module": "tweak_shader_web.js",
+  "types": "tweak_shader_web.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

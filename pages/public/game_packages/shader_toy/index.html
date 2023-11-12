@@ -18,9 +18,8 @@
         window.init_callback();
         let list = window.global_input_list.clone();
         let rx = window.global_tx.clone();
-      App.new(str, "myCanvas", rx, list, e => console.log(e)).then(
+      App.new(str, "myCanvas", rx, list, e => window.error_callback(e)).then(
           function(app) { 
-            app.on_update((e) => console.log(e));
             app.run();
           },
           function(error) { console.log(error) }
