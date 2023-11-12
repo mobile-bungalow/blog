@@ -20,6 +20,7 @@
         let rx = window.global_tx.clone();
       App.new(str, "myCanvas", rx, list, e => console.log(e)).then(
           function(app) { 
+            app.on_update((e) => console.log(e));
             app.run();
           },
           function(error) { console.log(error) }
