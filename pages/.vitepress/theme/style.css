@@ -79,3 +79,37 @@ html, body {
 .copy {
     display: none;
 }
+
+.fig_caption {
+    font-style: italic;
+    font-size: 0.75em;
+    text-align: center;
+    width: 95%;
+    margin-bottom: 50px;
+}
+
+.row {
+    display: flex;
+    width: 50%;
+}
+
+.row img {
+    border: none;
+    margin-right: 10px;
+}
+
+ul {
+    font-family: var(--title-font-family);
+    color: var(--line-color);
+}
+
+@media only screen and (max-width: 669px) {
+
+.row {
+    flex-direction: column;
+    margin-right: 0px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+}
