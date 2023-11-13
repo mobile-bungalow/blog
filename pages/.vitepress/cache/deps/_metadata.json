@@ -1,44 +1,74 @@
 {
-  "hash": "2559f1af",
-  "browserHash": "68a7ef9c",
+  "hash": "6a2fe29a",
+  "browserHash": "93c5f638",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "e36c03e9",
+      "fileHash": "f2e2f704",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "fbf2b61e",
-      "needsInterop": false
-    },
-    "vue-codemirror": {
-      "src": "../../../../node_modules/vue-codemirror/dist/vue-codemirror.esm.js",
-      "file": "vue-codemirror.js",
-      "fileHash": "fe63853a",
+      "fileHash": "ec365e22",
       "needsInterop": false
     },
     "@codemirror/theme-one-dark": {
       "src": "../../../../node_modules/@codemirror/theme-one-dark/dist/index.js",
       "file": "@codemirror_theme-one-dark.js",
-      "fileHash": "b06b2f75",
+      "fileHash": "dd5bf1db",
       "needsInterop": false
     },
     "@codemirror/lang-cpp": {
       "src": "../../../../node_modules/@codemirror/lang-cpp/dist/index.js",
       "file": "@codemirror_lang-cpp.js",
-      "fileHash": "2f5c7f32",
+      "fileHash": "271251c6",
+      "needsInterop": false
+    },
+    "codemirror": {
+      "src": "../../../../node_modules/codemirror/dist/index.js",
+      "file": "codemirror.js",
+      "fileHash": "9ad22c2f",
+      "needsInterop": false
+    },
+    "@codemirror/state": {
+      "src": "../../../../node_modules/@codemirror/state/dist/index.js",
+      "file": "@codemirror_state.js",
+      "fileHash": "c053b97a",
+      "needsInterop": false
+    },
+    "@codemirror/view": {
+      "src": "../../../../node_modules/@codemirror/view/dist/index.js",
+      "file": "@codemirror_view.js",
+      "fileHash": "b23cf532",
+      "needsInterop": false
+    },
+    "@codemirror/commands": {
+      "src": "../../../../node_modules/@codemirror/commands/dist/index.js",
+      "file": "@codemirror_commands.js",
+      "fileHash": "1f5cb6ad",
+      "needsInterop": false
+    },
+    "@codemirror/language": {
+      "src": "../../../../node_modules/@codemirror/language/dist/index.js",
+      "file": "@codemirror_language.js",
+      "fileHash": "ccfe4530",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-3454VYDT": {
-      "file": "chunk-3454VYDT.js"
+    "chunk-LW3XBOKI": {
+      "file": "chunk-LW3XBOKI.js"
     },
-    "chunk-V634PGSD": {
-      "file": "chunk-V634PGSD.js"
+    "chunk-7E4EEVQG": {
+      "file": "chunk-7E4EEVQG.js"
+    },
+    "chunk-AHGZCM35": {
+      "file": "chunk-AHGZCM35.js"
+    },
+    "chunk-3H7ZUNTU": {
+      "file": "chunk-3H7ZUNTU.js"
     }
   }
 }

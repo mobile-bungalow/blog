@@ -12,6 +12,6 @@
     "tweak_shader_web": "file:pages/packages/pkg",
     "vitepress": "^1.0.0-beta.6",
     "vue": "^3.3.4",
-    "vue-codemirror": "^6.1.1"
+    "vue-codemirror": "file:external/vue-codemirror"
   }
 }
