@@ -19,7 +19,7 @@ excerpt: Games such as diablo and various action RPG's with isometric or top-dow
 ## Ray Casting
 
 One solution is to check if a ray cast between the player and camera intersects any props, and then reducing the opacity on those props through a variable passed into their materials. This is a simple and inexpensive operation in most game engines. I've provided a sample [godot project with a rough implementation here](https://github.com/mobile-bungalow/TransparencyDemo1). You can play it in 
-browser below.
+browser below. NOTE: Godot 4 takes around 2 minutes to load a game on the web. This is a documented issue.
 
 <GameContainer :mobile_compat=false src="/game_packages/Demo_1_blog_1/index.html"/> 
 

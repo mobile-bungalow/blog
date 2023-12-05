@@ -90,7 +90,6 @@ html, body {
 
 .row {
     display: flex;
-    width: 50%;
 }
 
 .row img {
